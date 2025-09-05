@@ -1,9 +1,8 @@
 import express from "express";
 
 const app = express();
-app.use(express.json());
-
 const users = [];
+app.use(express.json());
 
 app.post("/usuarios", (req, res) => {
 
