@@ -55,7 +55,20 @@ app.put("/usuarios/:id", async (req, res) => {
 //criar uma rota para listar usuários
 app.get("/usuarios", async (req, res) => {
 
-  const users = await prisma.user.findMany();
+  //fazer a busca no banco de dados com filtros
+  let users = [];
+  if(req.query){
+    users = await prisma.user.findMany({
+      where: {
+        name: { contains: req.query.name },
+        age: { contains: req.query.age},
+        email: { contains: req.query.email},
+      }
+    });
+
+  } else{
+    const users = await prisma.user.findMany();
+  }
 
   res.status(200).json(users);
 });
