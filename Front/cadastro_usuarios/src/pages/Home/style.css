@@ -1,0 +1,262 @@
+/* ===== VARIÁVEIS CSS ===== */
+:root {
+  --primary-bg: #262541;
+  --secondary-bg: #636186;
+  --text-color: #fff;
+  --border-radius-small: 8px;
+  --border-radius-large: 30px;
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  --max-width-form: 400px;
+  --transition: all 0.3s ease;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== RESET E BASE ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== COMPONENTE PRINCIPAL ===== */
+.home-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px var(--spacing-medium) var(--spacing-medium);
+  min-height: 100vh;
+  gap: var(--spacing-large);
+}
+
+/* ===== TIPOGRAFIA ===== */
+h1 {
+  color: var(--text-color);
+  font-size: clamp(24px, 4vw, 32px);
+  margin: 0 0 var(--spacing-large) 0;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ===== FORMULÁRIO ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+  padding: var(--spacing-large);
+  border-radius: var(--border-radius-small);
+  background-color: var(--primary-bg);
+  width: 100%;
+  max-width: var(--max-width-form);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+form:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ===== INPUTS ===== */
+form input {
+  border: 1px solid var(--secondary-bg);
+  border-radius: var(--border-radius-large);
+  height: 48px;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  padding: 0 16px;
+  outline: none;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+form input:focus {
+  border-color: var(--text-color);
+  background-color: rgba(99, 97, 134, 0.8);
+  transform: translateY(-1px);
+}
+
+form input:hover {
+  background-color: rgba(99, 97, 134, 0.9);
+}
+
+/* ===== BOTÕES ===== */
+form button {
+  border-radius: var(--border-radius-large);
+  background-color: var(--secondary-bg);
+  height: 48px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color);
+  transition: var(--transition);
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+form button:hover {
+  background-color: #7a78a3;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== CARD DO USUÁRIO ===== */
+.user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-bg);
+  margin: var(--spacing-small) 0;
+  padding: var(--spacing-medium);
+  width: 100%;
+  max-width: var(--max-width-form);
+  border-radius: var(--border-radius-small);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.user-card p {
+  color: var(--text-color);
+  font-weight: 600;
+  margin: 0;
+  font-size: 14px;
+}
+
+.user-card p span {
+  font-weight: 400;
+  margin-left: 8px;
+  opacity: 0.9;
+}
+
+.user-card button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.user-card button:active {
+  transform: scale(0.95);
+}
+
+.user-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.user-card button:hover img {
+  transform: rotate(180deg);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 60px 16px 16px;
+  }
+  
+  form {
+    padding: var(--spacing-medium);
+    gap: 18px;
+  }
+  
+  .user-card {
+    margin: 8px 0;
+    padding: 16px;
+  }
+  
+  :root {
+    --max-width-form: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 40px 12px 12px;
+  }
+  
+  form {
+    padding: 18px;
+  }
+  
+  form input,
+  form button {
+    height: 44px;
+  }
+}
+
+/* ===== ESTADOS DE LOADING (OPCIONAL) ===== */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--text-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== MELHORIAS DE ACESSIBILIDADE ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visível para acessibilidade */
+form input:focus,
+form button:focus,
+.user-card button:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
