@@ -17,11 +17,15 @@ const app = express();
 //iniciar o prisma client
 const prisma = new PrismaClient();
 
+//habilitar o cors para permitir requisições de outras origens (Front-end)
+app.use(
+  cors({
+    origin: "https://fullstack-project-1-teaa.onrender.com", // URL do frontend
+  })
+);
+
 //configurar o express para entender JSON
 app.use(express.json());
-
-//habilitar o cors para permitir requisições de outras origens (Front-end)
-app.use(cors());
 
 //criar uma rota para criar usuários
 app.post("/usuarios", async (req, res) => {
