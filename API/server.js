@@ -2,6 +2,7 @@
 import express from "express";
 //importar o prisma client
 import { PrismaClient } from "./generated/prisma/index.js";
+import cors from "cors";
 
 //importar o express
 //criar o servidor
@@ -16,9 +17,11 @@ const app = express();
 //iniciar o prisma client
 const prisma = new PrismaClient();
 
-
 //configurar o express para entender JSON
 app.use(express.json());
+
+//habilitar o cors para permitir requisições de outras origens (Front-end)
+app.use(cors());
 
 //criar uma rota para criar usuários
 app.post("/usuarios", async (req, res) => {
@@ -30,14 +33,16 @@ app.post("/usuarios", async (req, res) => {
     },
   });
 
-  res.status(201).send(req.body).json({ message: "Usuário criado com sucesso" });
+  res
+    .status(201)
+    .send(req.body)
+    .json({ message: "Usuário criado com sucesso" });
   users.push(req.body);
 });
 
 //criar uma rota para atualizar usuários
 app.put("/usuarios/:id", async (req, res) => {
   await prisma.user.update({
-
     //id do usuário que será atualizado
     where: { id: req.params.id },
 
@@ -48,25 +53,26 @@ app.put("/usuarios/:id", async (req, res) => {
     },
   });
 
-  res.status(201).send(req.body).json({ message: "Usuário atualizado com sucesso" });
+  res
+    .status(201)
+    .send(req.body)
+    .json({ message: "Usuário atualizado com sucesso" });
   users.push(req.body);
 });
 
 //criar uma rota para listar usuários
 app.get("/usuarios", async (req, res) => {
-
   //fazer a busca no banco de dados com filtros
   let users = [];
-  if(req.query){
+  if (req.query) {
     users = await prisma.user.findMany({
       where: {
         name: { contains: req.query.name },
-        age: { contains: req.query.age},
-        email: { contains: req.query.email},
-      }
+        age: { contains: req.query.age },
+        email: { contains: req.query.email },
+      },
     });
-
-  } else{
+  } else {
     const users = await prisma.user.findMany();
   }
 
@@ -75,15 +81,12 @@ app.get("/usuarios", async (req, res) => {
 
 //criar uma rota para deletar usuários
 app.delete("/usuarios/:id", async (req, res) => {
-
   await prisma.user.delete({
     where: { id: req.params.id },
-  }); 
+  });
 
   res.status(204).json({ message: "Usuário deletado com sucesso" });
 });
-
-
 
 //fazer o servidor ouvir a porta 3000
 app.listen(3000, () => {
