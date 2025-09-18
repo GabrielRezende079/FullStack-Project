@@ -2,11 +2,11 @@
   "name": "api",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "prisma generate",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -21,3 +21,4 @@
     "prisma": "^6.16.1"
   }
 }
+
