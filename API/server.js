@@ -1,7 +1,7 @@
 //express é um framework para nodejs que facilita a criação de servidores web
 import express from "express";
 //importar o prisma client
-import { PrismaClient } from "./generated/prisma/index.js";
+import { PrismaClient } from "@prisma/client";
 import cors from "cors";
 
 //importar o express
@@ -20,7 +20,7 @@ const prisma = new PrismaClient();
 //habilitar o cors para permitir requisições de outras origens (Front-end)
 app.use(
   cors({
-    origin: "https://fullstack-project-1-teaa.onrender.com", // URL do frontend
+    origin: process.env.FRONTEND_URL || "*",
   })
 );
 
@@ -92,9 +92,10 @@ app.delete("/usuarios/:id", async (req, res) => {
   res.status(204).json({ message: "Usuário deletado com sucesso" });
 });
 
-//fazer o servidor ouvir a porta 3000
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+//fazer o servidor ouvir a porta dinâmica do ambiente Render
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
 
 /*
