@@ -2,6 +2,7 @@
 import express from "express";
 //importar o prisma client
 import { PrismaClient } from "@prisma/client";
+const { PrismaClient } = pkg;
 import cors from "cors";
 
 //importar o express
