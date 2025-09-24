@@ -1,4 +1,4 @@
-# FullStack-Project
+# FullStack Project 💻
 
 Projeto Full Stack para cadastro e gerenciamento de usuários, utilizando React no frontend, Node.js/Express no backend e banco de dados MongoDB com Prisma ORM.
 
@@ -37,7 +37,7 @@ FullStack-Project/
 - Node.js 18+
 - Conta no MongoDB Atlas (ou string de conexão MongoDB)
 
-### 1. Backend (API)
+### 1. Backend (API) ⚙️
 
 ```bash
 cd API
@@ -48,7 +48,7 @@ npx prisma db push
 npm start
 ```
 
-### 2. Frontend (React)
+### 2. Frontend (React) 🌐
 
 ```bash
 cd Front/cadastro_usuarios
