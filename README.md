@@ -58,10 +58,10 @@ npm install
 npm run dev
 ```
 
-<img width="1317" height="919" alt="Image" src="https://github.com/user-attachments/assets/188f503a-bd97-428d-a12c-9377484124d5" />
+<img width="1317" height="919" alt="Image"  src="https://github.com/user-attachments/assets/188f503a-bd97-428d-a12c-9377484124d5" />
 
 
-###Acesse o frontend ➡️  [Link](https://fullstack-project-1-teaa.onrender.com)
+###Acesse o frontend ➡️  [Link](target="_blank"https://fullstack-project-1-teaa.onrender.com)
 
 ---
 
